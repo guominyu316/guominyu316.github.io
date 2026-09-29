@@ -176,12 +176,15 @@ body::after {
   border-radius: 0 6px 6px 0;
 }
 
-/* ===== 表格 ===== */
+/* ===== 表格：手机横向滚动 ===== */
 .content table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 15px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 .content th,
 .content td {
@@ -227,5 +230,12 @@ body::after {
     margin: 16px 12px;
     padding: 28px 20px;
     border-radius: 12px;
+  }
+  .content table {
+    font-size: 13px;
+  }
+  .content th,
+  .content td {
+    padding: 6px 8px;
   }
 }
