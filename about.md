@@ -19,5 +19,10 @@ title: 关于我
 
 ## 联系方式
 
-- 📧 邮箱：你的邮箱
-- 🐙 GitHub：[GMY316](https://github.com/guominyu316)
+| 平台 | 账号 |
+|---|---|
+| 📧 邮箱 | 123456789@email.com |
+| 🐙 GitHub | [GMY316](https://github.com/guominyu316) |
+| 💬 微信 | 123456789 |
+| 🐧 QQ | 123456789 |
+```
