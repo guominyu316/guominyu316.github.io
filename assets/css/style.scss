@@ -3,34 +3,34 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== 极淡蓝底 ===== */
+/* ===== 蓝色底 ===== */
 body {
   font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
-  background: linear-gradient(135deg, #f0f5fc, #e8f0fa, #e0ecf8);
+  background: linear-gradient(135deg, #c8ddf5, #a8c8f0, #88b0e8);
   color: #333;
   line-height: 1.8;
   min-height: 100vh;
 }
 
-/* ===== 毛玻璃遮罩层 ===== */
+/* ===== 蓝色毛玻璃遮罩层 ===== */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: -1;
-  background: rgba(255, 255, 255, .35);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(200, 225, 255, .35);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
 }
 
-/* ===== 导航栏：透明玻璃 ===== */
+/* ===== 导航栏：蓝色玻璃 ===== */
 .navbar {
-  background: rgba(255, 255, 255, .4);
+  background: rgba(255, 255, 255, .35);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   border-bottom: 1px solid rgba(255, 255, 255, .6);
-  box-shadow: 0 4px 20px rgba(80, 120, 180, .08);
+  box-shadow: 0 4px 20px rgba(60, 100, 170, .1);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -47,37 +47,38 @@ body::before {
 .logo {
   font-weight: 700;
   font-size: 18px;
-  color: #2c3e50;
+  color: #1e3c72;
   text-decoration: none;
 }
 .nav-links { list-style: none; display: flex; gap: 8px; }
 .nav-links a {
   text-decoration: none;
-  color: #2c3e50;
+  color: #1e3c72;
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 15px;
   transition: all .25s;
 }
 .nav-links a:hover {
-  background: rgba(100, 160, 220, .15);
+  background: rgba(100, 160, 220, .2);
+  color: #0f2b5b;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
 }
 
-/* ===== 内容区：透明玻璃卡片 ===== */
+/* ===== 内容区：蓝色玻璃卡片 ===== */
 .content {
   max-width: 1100px;
   width: 90%;
   margin: 32px auto;
   padding: 48px 40px;
   min-height: calc(100vh - 200px);
-  background: rgba(255, 255, 255, .75);
+  background: rgba(255, 255, 255, .7);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, .8);
   border-radius: 16px;
   box-shadow:
-    0 8px 32px rgba(80, 120, 180, .12),
+    0 8px 32px rgba(60, 100, 170, .18),
     inset 0 1px 0 rgba(255, 255, 255, .9);
 }
 .content h1 {
@@ -104,14 +105,14 @@ body::before {
 .content a:hover { text-decoration: underline; }
 .content hr { border: none; border-top: 1px solid rgba(0, 0, 0, .1); margin: 28px 0; }
 .content code {
-  background: rgba(100, 160, 220, .15);
+  background: rgba(100, 160, 220, .18);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 14px;
   color: #d6336c;
 }
 .content pre {
-  background: rgba(30, 60, 114, .92);
+  background: rgba(20, 50, 100, .92);
   color: #d0e0f0;
   padding: 16px;
   border-radius: 10px;
@@ -141,28 +142,28 @@ body::before {
 }
 .content th,
 .content td {
-  border: 1px solid #ddd;
+  border: 1px solid #cddcee;
   padding: 10px 14px;
   text-align: left;
 }
 .content th {
-  background: rgba(100, 160, 220, .15);
+  background: rgba(100, 160, 220, .2);
   color: #1e3c72;
   font-weight: 600;
 }
 .content tr:nth-child(even) {
-  background: rgba(100, 160, 220, .05);
+  background: rgba(100, 160, 220, .06);
 }
 .content tr:hover {
-  background: rgba(100, 160, 220, .1);
+  background: rgba(100, 160, 220, .12);
 }
 
-/* ===== 页脚：透明玻璃 ===== */
+/* ===== 页脚：蓝色玻璃 ===== */
 .footer {
   text-align: center;
   padding: 24px;
   font-size: 13px;
-  color: #5a7a9a;
+  color: #3a5a7a;
   background: rgba(255, 255, 255, .25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
