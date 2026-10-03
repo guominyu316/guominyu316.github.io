@@ -30,12 +30,12 @@
   <!-- ===== 右下角悬浮播放器 ===== -->
   <div id="bg-player">
     <div id="bg-song-name">未播放</div>
-    <div id="bg-controls">
+    <div id="bg-row">
       <button id="bg-prev-btn" title="上一首">⏮</button>
       <button id="bg-play-btn" title="播放/暂停">▶</button>
       <button id="bg-next-btn" title="下一首">⏭</button>
+      <input type="range" id="bg-volume" min="0" max="1" step="0.01" value="1">
     </div>
-    <input type="range" id="bg-volume" min="0" max="1" step="0.01" value="1">
   </div>
 
   <audio id="bg-music" preload="auto"></audio>
@@ -51,49 +51,49 @@
       -webkit-backdrop-filter: blur(14px) saturate(160%);
       border: 1px solid rgba(255, 255, 255, .5);
       border-radius: 12px;
-      padding: 8px 10px;
+      padding: 7px 11px;
       box-shadow: 0 4px 16px rgba(60, 100, 170, .18);
       text-align: center;
-      width: 150px;
     }
     #bg-song-name {
-      font-size: 11px;
+      font-size: 10px;
       color: #1e3c72;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 160px;
     }
-    #bg-controls {
+    #bg-row {
       display: flex;
+      align-items: center;
       gap: 6px;
-      justify-content: center;
-      margin-bottom: 6px;
     }
-    #bg-controls button {
-      width: 28px;
-      height: 28px;
+    #bg-row button {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       border: none;
       background: rgba(58, 110, 165, .9);
       color: #fff;
-      font-size: 11px;
+      font-size: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all .2s;
       padding: 0;
+      flex-shrink: 0;
     }
-    #bg-controls button:hover {
+    #bg-row button:hover {
       background: rgba(74, 126, 181, 1);
       transform: scale(1.1);
     }
-    #bg-controls button:active {
+    #bg-row button:active {
       transform: scale(0.95);
     }
     #bg-volume {
-      width: 100%;
+      width: 60px;
       height: 3px;
       -webkit-appearance: none;
       appearance: none;
