@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <audio id="bg-music" preload="auto"></audio>
+  <audio id="bg-music" preload="none"></audio>
 
   <style>
     #bg-player {
@@ -144,38 +144,49 @@
         { name: "风雨爱人 - 李翊君",   src: "{{ '/assets/audio/003.mp3' | relative_url }}" }
       ];
       var current = 0;
+      var loaded = false;   // 是否已加载音频
+
+      // 只显示歌名，不加载音频
+      nameEl.textContent = playlist[0].name;
 
       function loadSong(index) {
         current = (index + playlist.length) % playlist.length;
         audio.src = playlist[current].src;
         nameEl.textContent = playlist[current].name;
+        loaded = true;
       }
 
-      loadSong(0);
-
-      audio.addEventListener('ended', function(){
-        loadSong(current + 1);
-        audio.play().catch(function(){});
-      });
-
+      // 点击播放按钮
       btn.addEventListener('click', function(){
         if (audio.paused) {
+          if (!loaded) {
+            loadSong(current);   // 第一次点击才加载
+          }
           audio.play().catch(function(){});
         } else {
           audio.pause();
         }
       });
 
+      // 上一首
       prevBtn.addEventListener('click', function(){
         loadSong(current - 1);
         audio.play().catch(function(){});
       });
 
+      // 下一首
       nextBtn.addEventListener('click', function(){
         loadSong(current + 1);
         audio.play().catch(function(){});
       });
 
+      // 一首放完自动下一首
+      audio.addEventListener('ended', function(){
+        loadSong(current + 1);
+        audio.play().catch(function(){});
+      });
+
+      // 音量
       volumeEl.addEventListener('input', function(){
         audio.volume = volumeEl.value;
       });
