@@ -29,12 +29,15 @@
 
   <!-- ===== 右下角悬浮播放器 ===== -->
   <div id="bg-player">
-    <button id="bg-play-btn" title="播放/暂停">▶</button>
+    <div id="bg-song-name">未播放</div>
+    <div id="bg-controls">
+      <button id="bg-prev-btn" title="上一首">⏮</button>
+      <button id="bg-play-btn" title="播放/暂停">▶</button>
+      <button id="bg-next-btn" title="下一首">⏭</button>
+    </div>
   </div>
 
-  <audio id="bg-music" loop preload="auto">
-    <source src="{{ '/assets/audio/qing-shen-hai-geng-shen.mp3' | relative_url }}" type="audio/mpeg">
-  </audio>
+  <audio id="bg-music" preload="auto"></audio>
 
   <style>
     #bg-player {
@@ -42,29 +45,48 @@
       bottom: 20px;
       right: 20px;
       z-index: 999;
+      background: rgba(255, 255, 255, .25);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, .5);
+      border-radius: 16px;
+      padding: 10px 14px;
+      box-shadow: 0 4px 20px rgba(60, 100, 170, .2);
+      text-align: center;
+      max-width: 220px;
     }
-    #bg-play-btn {
-      width: 48px;
-      height: 48px;
+    #bg-song-name {
+      font-size: 12px;
+      color: #1e3c72;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #bg-controls {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    #bg-controls button {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: none;
       background: rgba(58, 110, 165, .9);
       color: #fff;
-      font-size: 20px;
+      font-size: 14px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all .25s;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all .25s;
     }
-    #bg-play-btn:hover {
+    #bg-controls button:hover {
       background: rgba(74, 126, 181, 1);
       transform: scale(1.08);
     }
-    #bg-play-btn:active {
+    #bg-controls button:active {
       transform: scale(0.95);
     }
   </style>
@@ -73,11 +95,29 @@
     (function(){
       var audio = document.getElementById('bg-music');
       var btn = document.getElementById('bg-play-btn');
+      var prevBtn = document.getElementById('bg-prev-btn');
+      var nextBtn = document.getElementById('bg-next-btn');
+      var nameEl = document.getElementById('bg-song-name');
       audio.volume = 1.0;
 
-      // 播放结束自动重头（双保险）
+      // ===== 播放列表：歌名 + 文件路径 =====
+      var playlist = [
+        { name: "情深海更深 - 黎姿",   src: "{{ '/assets/audio/001.mp3' | relative_url }}" },
+        { name: "痴心换情深 - 周慧敏", src: "{{ '/assets/audio/002.mp3' | relative_url }}" },
+        { name: "风雨爱人 - 李翊君",   src: "{{ '/assets/audio/003.mp3' | relative_url }}" }
+      ];
+      var current = 0;
+
+      function loadSong(index) {
+        current = (index + playlist.length) % playlist.length;
+        audio.src = playlist[current].src;
+        nameEl.textContent = playlist[current].name;
+      }
+
+      loadSong(0);
+
       audio.addEventListener('ended', function(){
-        audio.currentTime = 0;
+        loadSong(current + 1);
         audio.play().catch(function(){});
       });
 
@@ -87,6 +127,16 @@
         } else {
           audio.pause();
         }
+      });
+
+      prevBtn.addEventListener('click', function(){
+        loadSong(current - 1);
+        audio.play().catch(function(){});
+      });
+
+      nextBtn.addEventListener('click', function(){
+        loadSong(current + 1);
+        audio.play().catch(function(){});
       });
 
       audio.addEventListener('play', function(){ btn.textContent = '⏸'; });
