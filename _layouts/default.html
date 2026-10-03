@@ -43,40 +43,46 @@
   <style>
     #bg-player {
       position: fixed;
-      bottom: 16px;
-      right: 16px;
+      bottom: 12px;
+      right: 12px;
       z-index: 999;
-      background: rgba(255, 255, 255, .25);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, .5);
-      border-radius: 12px;
-      padding: 7px 11px;
-      box-shadow: 0 4px 16px rgba(60, 100, 170, .18);
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 10px;
+      padding: 5px 9px;
+      box-shadow: 0 4px 16px rgba(60, 100, 170, .12);
       text-align: center;
+      opacity: .85;
+      transition: opacity .25s;
+    }
+    #bg-player:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, .2);
     }
     #bg-song-name {
-      font-size: 10px;
+      font-size: 9px;
       color: #1e3c72;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 160px;
+      max-width: 140px;
     }
     #bg-row {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
     #bg-row button {
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       border: none;
-      background: rgba(58, 110, 165, .9);
+      background: rgba(58, 110, 165, .8);
       color: #fff;
-      font-size: 10px;
+      font-size: 9px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -93,11 +99,11 @@
       transform: scale(0.95);
     }
     #bg-volume {
-      width: 60px;
+      width: 50px;
       height: 3px;
       -webkit-appearance: none;
       appearance: none;
-      background: rgba(58, 110, 165, .3);
+      background: rgba(58, 110, 165, .25);
       border-radius: 3px;
       outline: none;
       cursor: pointer;
@@ -105,15 +111,15 @@
     #bg-volume::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #3a6ea5;
       cursor: pointer;
     }
     #bg-volume::-moz-range-thumb {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #3a6ea5;
       border: none;
