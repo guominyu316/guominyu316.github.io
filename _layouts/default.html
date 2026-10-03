@@ -73,7 +73,13 @@
     (function(){
       var audio = document.getElementById('bg-music');
       var btn = document.getElementById('bg-play-btn');
-      audio.volume = 0.5;
+      audio.volume = 1.0;
+
+      // 播放结束自动重头（双保险）
+      audio.addEventListener('ended', function(){
+        audio.currentTime = 0;
+        audio.play().catch(function(){});
+      });
 
       btn.addEventListener('click', function(){
         if (audio.paused) {
