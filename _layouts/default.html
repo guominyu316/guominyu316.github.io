@@ -27,5 +27,66 @@
     Thanks for stopping by! 😁
   </footer>
 
+  <!-- ===== 右下角悬浮播放器 ===== -->
+  <div id="bg-player">
+    <button id="bg-play-btn" title="播放/暂停">▶</button>
+  </div>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="{{ '/assets/audio/qing-shen-hai-geng-shen.mp3' | relative_url }}" type="audio/mpeg">
+  </audio>
+
+  <style>
+    #bg-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    #bg-play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(58, 110, 165, .9);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #bg-play-btn:hover {
+      background: rgba(74, 126, 181, 1);
+      transform: scale(1.08);
+    }
+    #bg-play-btn:active {
+      transform: scale(0.95);
+    }
+  </style>
+
+  <script>
+    (function(){
+      var audio = document.getElementById('bg-music');
+      var btn = document.getElementById('bg-play-btn');
+      audio.volume = 0.5;
+
+      btn.addEventListener('click', function(){
+        if (audio.paused) {
+          audio.play().catch(function(){});
+        } else {
+          audio.pause();
+        }
+      });
+
+      audio.addEventListener('play', function(){ btn.textContent = '⏸'; });
+      audio.addEventListener('pause', function(){ btn.textContent = '▶'; });
+    })();
+  </script>
+
 </body>
 </html>
