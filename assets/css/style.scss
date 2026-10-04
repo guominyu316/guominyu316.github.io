@@ -27,7 +27,7 @@ body::before {
     rgba(60, 120, 200, .5) 40px
   );
   opacity: 0.12;
-  animation: matrix 20s linear infinite;
+  animation: shiftStripes 20s linear infinite;
   pointer-events: none;
   will-change: transform;
 }
@@ -47,7 +47,7 @@ body::after {
     transparent 12px
   );
   opacity: 0.15;
-  animation: matrixReverse 26s linear infinite;
+  animation: shiftStripesReverse 26s linear infinite;
   pointer-events: none;
   will-change: transform;
 }
@@ -68,13 +68,13 @@ html::before {
 }
 
 /* 动画定义 */
-@keyframes matrix {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
+@keyframes shiftStripes {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(40px, 40px) rotate(0.5deg); }
 }
-@keyframes matrixReverse {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(-30px, -30px); }
+@keyframes shiftStripesReverse {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-30px, -30px) rotate(-0.3deg); }
 }
 @keyframes gridPulse {
   0%   { opacity: 0.25; }
@@ -149,7 +149,7 @@ html::before {
   width: 60%;
 }
 
-/* ===== 内容区：蓝色玻璃卡片 ===== */
+/* ===== 内容区：蓝色玻璃卡片（浮动） ===== */
 .content {
   max-width: 1100px;
   width: 90%;
@@ -164,19 +164,22 @@ html::before {
   box-shadow:
     0 8px 32px rgba(60, 100, 170, .18),
     inset 0 1px 0 rgba(255, 255, 255, .9);
-  transition: transform .3s, box-shadow .3s;
-  animation: fadeIn .6s ease-out;
+  transition: box-shadow .3s;
+  animation: fadeIn .6s ease-out, cardFloat 5s ease-in-out infinite;
 }
 .content:hover {
-  transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(60, 100, 170, .25);
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }
 
-/* ===== 标题：蓝色霓虹发光 ===== */
+/* ===== 标题：霓虹闪烁 ===== */
 .content h1 {
   font-size: 28px;
   margin-bottom: 20px;
@@ -184,11 +187,7 @@ html::before {
   letter-spacing: 2px;
   border-bottom: 3px solid rgba(100, 160, 220, .6);
   padding-bottom: 10px;
-  text-shadow:
-    0 0 5px rgba(100, 160, 220, .8),
-    0 0 10px rgba(160, 100, 220, .6),
-    0 0 15px rgba(100, 160, 220, .4);
-  animation: pulse 2s ease-in-out infinite alternate;
+  animation: flicker 3s linear infinite;
 }
 .content h2 {
   font-size: 20px;
@@ -198,17 +197,21 @@ html::before {
     0 0 4px rgba(100, 160, 220, .6),
     0 0 8px rgba(160, 100, 220, .4);
 }
-@keyframes pulse {
-  0% {
+
+/* 霓虹闪烁关键帧 */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
     text-shadow:
-      0 0 5px rgba(100, 160, 220, .6),
-      0 0 10px rgba(160, 100, 220, .4);
+      0 0 5px rgba(100, 160, 220, .9),
+      0 0 10px rgba(160, 100, 220, .7),
+      0 0 15px rgba(100, 160, 220, .5);
   }
-  100% {
+  20%, 24%, 55% {
+    opacity: 0.7;
     text-shadow:
-      0 0 10px rgba(100, 160, 220, .9),
-      0 0 20px rgba(160, 100, 220, .7),
-      0 0 30px rgba(100, 160, 220, .5);
+      0 0 3px rgba(100, 160, 220, .5),
+      0 0 6px rgba(160, 100, 220, .3);
   }
 }
 
