@@ -398,11 +398,19 @@ body.dark-mode .footer {
 @media (max-width: 600px) {
   .nav-inner {
     height: auto;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
     padding: 12px;
   }
-  .nav-links { flex-wrap: wrap; justify-content: center; }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #theme-toggle {
+    margin-left: 0;
+  }
   .content {
     margin: 16px 12px;
     padding: 28px 20px;
