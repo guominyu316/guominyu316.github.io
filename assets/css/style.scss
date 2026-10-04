@@ -12,43 +12,73 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 动态斜纹层 ===== */
+/* ===== 动态斜纹层（45° 主纹） ===== */
 body::before {
   content: "";
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -2;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(60, 120, 200, .5) 2px,
-      rgba(60, 120, 200, .5) 4px
-    );
-  opacity: 0.1;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  z-index: -3;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 20px,
+    rgba(60, 120, 200, .5) 20px,
+    rgba(60, 120, 200, .5) 40px
+  );
+  opacity: 0.12;
   animation: matrix 20s linear infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
-/* ===== 毛玻璃遮罩层 ===== */
+/* ===== 反向细纹层 ===== */
 body::after {
+  content: "";
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  z-index: -2;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(160, 100, 220, .4) 0px,
+    rgba(160, 100, 220, .4) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+  opacity: 0.15;
+  animation: matrixReverse 26s linear infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ===== 网格脉冲层 ===== */
+html::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: -1;
-  background: rgba(200, 225, 255, .25);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background-image:
+    linear-gradient(rgba(100, 160, 220, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160, 100, 220, .08) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
+  animation: gridPulse 4s ease-in-out infinite alternate;
 }
 
-/* 斜纹动画 */
+/* 动画定义 */
 @keyframes matrix {
-  0%   { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(50px) translateY(50px); }
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+@keyframes matrixReverse {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-30px, -30px); }
+}
+@keyframes gridPulse {
+  0%   { opacity: 0.25; }
+  100% { opacity: 0.6; }
 }
 
 /* ===== 导航栏：蓝色玻璃 + 霓虹发光 ===== */
@@ -313,17 +343,22 @@ body.dark-mode {
   color: #d0d8e8;
 }
 body.dark-mode::before {
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(100, 160, 220, .5) 2px,
-      rgba(100, 160, 220, .5) 4px
-    );
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 20px,
+    rgba(100, 160, 220, .5) 20px,
+    rgba(100, 160, 220, .5) 40px
+  );
 }
 body.dark-mode::after {
-  background: rgba(20, 40, 80, .35);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(160, 100, 220, .4) 0px,
+    rgba(160, 100, 220, .4) 2px,
+    transparent 2px,
+    transparent 12px
+  );
 }
 body.dark-mode .navbar {
   background: rgba(20, 40, 80, .35);
@@ -410,6 +445,9 @@ body.dark-mode .footer {
   }
   #theme-toggle {
     margin-left: 0;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
   }
   .content {
     margin: 16px 12px;
