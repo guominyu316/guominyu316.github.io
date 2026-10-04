@@ -51,14 +51,14 @@
   <style>
     /* 主题切换按钮 */
     #theme-toggle {
-      margin-left: 12px;
-      width: 34px;
-      height: 34px;
+      margin-left: 10px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, .5);
       background: rgba(255, 255, 255, .25);
       color: #1e3c72;
-      font-size: 15px;
+      font-size: 13px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -73,18 +73,18 @@
       transform: scale(1.08);
     }
 
-    /* 播放器样式 */
+    /* 播放器样式（缩小版） */
     #bg-player {
       position: fixed;
-      bottom: 12px;
-      right: 12px;
+      bottom: 10px;
+      right: 10px;
       z-index: 999;
       background: rgba(255, 255, 255, .12);
       backdrop-filter: blur(16px) saturate(160%);
       -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid rgba(255, 255, 255, .3);
-      border-radius: 10px;
-      padding: 5px 9px;
+      border-radius: 8px;
+      padding: 4px 7px;
       box-shadow: 0 4px 16px rgba(60, 100, 170, .12);
       text-align: center;
       opacity: .85;
@@ -95,27 +95,27 @@
       background: rgba(255, 255, 255, .2);
     }
     #bg-song-name {
-      font-size: 9px;
+      font-size: 8px;
       color: #1e3c72;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 140px;
+      max-width: 110px;
     }
     #bg-row {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
     #bg-row button {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       border: none;
       background: rgba(58, 110, 165, .8);
       color: #fff;
-      font-size: 9px;
+      font-size: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -132,7 +132,7 @@
       transform: scale(0.95);
     }
     #bg-volume {
-      width: 50px;
+      width: 40px;
       height: 3px;
       -webkit-appearance: none;
       appearance: none;
@@ -144,15 +144,15 @@
     #bg-volume::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #3a6ea5;
       cursor: pointer;
     }
     #bg-volume::-moz-range-thumb {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #3a6ea5;
       border: none;
