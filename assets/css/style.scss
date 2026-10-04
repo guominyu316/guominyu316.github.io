@@ -51,7 +51,7 @@ body::after {
   100% { transform: translateX(50px) translateY(50px); }
 }
 
-/* ===== 导航栏：蓝色玻璃 ===== */
+/* ===== 导航栏：蓝色玻璃 + 霓虹发光 ===== */
 .navbar {
   background: rgba(255, 255, 255, .35);
   backdrop-filter: blur(14px) saturate(160%);
@@ -76,6 +76,9 @@ body::after {
   font-size: 18px;
   color: #1e3c72;
   text-decoration: none;
+  text-shadow:
+    0 0 4px rgba(100, 160, 220, .7),
+    0 0 8px rgba(160, 100, 220, .5);
 }
 .nav-links { list-style: none; display: flex; gap: 8px; }
 .nav-links a {
@@ -86,10 +89,17 @@ body::after {
   font-size: 15px;
   transition: all .25s;
   position: relative;
+  text-shadow:
+    0 0 3px rgba(100, 160, 220, .6),
+    0 0 6px rgba(160, 100, 220, .4);
 }
 .nav-links a:hover {
   background: rgba(100, 160, 220, .2);
   color: #0f2b5b;
+  text-shadow:
+    0 0 5px rgba(100, 160, 220, .9),
+    0 0 10px rgba(160, 100, 220, .7),
+    0 0 15px rgba(100, 160, 220, .5);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
 }
 
@@ -295,6 +305,93 @@ body::after {
 }
 #back-to-top.show {
   display: flex;
+}
+
+/* ===== 深色模式 ===== */
+body.dark-mode {
+  background: linear-gradient(135deg, #0f1b2d, #1a2b45, #243b5c);
+  color: #d0d8e8;
+}
+body.dark-mode::before {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(100, 160, 220, .5) 2px,
+      rgba(100, 160, 220, .5) 4px
+    );
+}
+body.dark-mode::after {
+  background: rgba(20, 40, 80, .35);
+}
+body.dark-mode .navbar {
+  background: rgba(20, 40, 80, .35);
+  border-bottom-color: rgba(100, 160, 220, .3);
+}
+body.dark-mode .logo,
+body.dark-mode .nav-links a {
+  color: #a8c8f0;
+}
+body.dark-mode .nav-links a:hover {
+  background: rgba(100, 160, 220, .25);
+  color: #d0e8ff;
+}
+body.dark-mode #theme-toggle {
+  border-color: rgba(100, 160, 220, .4);
+  background: rgba(100, 160, 220, .2);
+  color: #a8c8f0;
+}
+body.dark-mode .content {
+  background: rgba(20, 40, 80, .65);
+  border-color: rgba(100, 160, 220, .3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, .4),
+    inset 0 1px 0 rgba(100, 160, 220, .2);
+}
+body.dark-mode .content h1 {
+  color: #a8c8f0;
+  border-bottom-color: rgba(100, 160, 220, .5);
+}
+body.dark-mode .content h2 {
+  color: #88b0e8;
+}
+body.dark-mode .content h3,
+body.dark-mode .content p,
+body.dark-mode .content li {
+  color: #c8d8e8;
+}
+body.dark-mode .content a {
+  color: #88b0e8;
+}
+body.dark-mode .content code {
+  background: rgba(100, 160, 220, .25);
+  color: #ff8ab8;
+}
+body.dark-mode .content pre {
+  background: rgba(5, 15, 35, .95);
+}
+body.dark-mode .content blockquote {
+  background: rgba(100, 160, 220, .1);
+  color: #a8b8c8;
+}
+body.dark-mode .content th {
+  background: rgba(100, 160, 220, .25);
+  color: #a8c8f0;
+}
+body.dark-mode .content td {
+  border-color: rgba(100, 160, 220, .3);
+}
+body.dark-mode .content tr:nth-child(even) {
+  background: rgba(100, 160, 220, .08);
+}
+body.dark-mode .content tr:hover {
+  background: rgba(100, 160, 220, .15);
+}
+body.dark-mode .footer {
+  color: #88a8c8;
+  background: rgba(20, 40, 80, .25);
+  border-top-color: rgba(100, 160, 220, .3);
 }
 
 /* ===== 手机适配 ===== */
