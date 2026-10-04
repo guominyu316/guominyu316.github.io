@@ -32,7 +32,7 @@
     Thanks for stopping by! 😁
   </footer>
 
-  <!-- ===== 右下角悬浮播放器 ===== -->
+  <!-- ===== 左下角悬浮播放器 ===== -->
   <div id="bg-player">
     <div id="bg-song-name">未播放</div>
     <div id="bg-row">
@@ -73,11 +73,11 @@
       transform: scale(1.08);
     }
 
-    /* 播放器样式（缩小版） */
+    /* 播放器样式（左下角） */
     #bg-player {
       position: fixed;
-      bottom: 10px;
-      right: 10px;
+      bottom: 4px;
+      left: 4px;
       z-index: 999;
       background: rgba(255, 255, 255, .12);
       backdrop-filter: blur(16px) saturate(160%);
@@ -157,6 +157,36 @@
       background: #3a6ea5;
       border: none;
       cursor: pointer;
+    }
+
+    /* 返回顶部按钮（右下角） */
+    #back-to-top {
+      position: fixed;
+      bottom: 60px;
+      right: 8px;
+      z-index: 999;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(58, 110, 165, .85);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(60, 100, 170, .25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all .25s;
+    }
+    #back-to-top:hover {
+      background: rgba(74, 126, 181, 1);
+      transform: scale(1.1);
+    }
+    #back-to-top.show {
+      display: flex;
     }
   </style>
 
