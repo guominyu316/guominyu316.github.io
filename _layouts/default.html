@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
+
+  <!-- 阅读进度条 -->
+  <div id="progress-bar"></div>
 
   <nav class="navbar">
     <div class="nav-inner">
@@ -40,7 +44,11 @@
 
   <audio id="bg-music" preload="none"></audio>
 
+  <!-- 返回顶部 -->
+  <button id="back-to-top" title="返回顶部">↑</button>
+
   <style>
+    /* 播放器样式 */
     #bg-player {
       position: fixed;
       bottom: 12px;
@@ -137,16 +145,14 @@
       var volumeEl = document.getElementById('bg-volume');
       audio.volume = 1.0;
 
-      // ===== 播放列表：歌名 + 文件路径 =====
       var playlist = [
         { name: "情深海更深 - 黎姿",   src: "{{ '/assets/audio/001.mp3' | relative_url }}" },
         { name: "痴心换情深 - 周慧敏", src: "{{ '/assets/audio/002.mp3' | relative_url }}" },
         { name: "风雨爱人 - 李翊君",   src: "{{ '/assets/audio/003.mp3' | relative_url }}" }
       ];
       var current = 0;
-      var loaded = false;   // 是否已加载音频
+      var loaded = false;
 
-      // 只显示歌名，不加载音频
       nameEl.textContent = playlist[0].name;
 
       function loadSong(index) {
@@ -156,43 +162,56 @@
         loaded = true;
       }
 
-      // 点击播放按钮
       btn.addEventListener('click', function(){
         if (audio.paused) {
-          if (!loaded) {
-            loadSong(current);   // 第一次点击才加载
-          }
+          if (!loaded) { loadSong(current); }
           audio.play().catch(function(){});
         } else {
           audio.pause();
         }
       });
 
-      // 上一首
       prevBtn.addEventListener('click', function(){
         loadSong(current - 1);
         audio.play().catch(function(){});
       });
 
-      // 下一首
       nextBtn.addEventListener('click', function(){
         loadSong(current + 1);
         audio.play().catch(function(){});
       });
 
-      // 一首放完自动下一首
       audio.addEventListener('ended', function(){
         loadSong(current + 1);
         audio.play().catch(function(){});
       });
 
-      // 音量
       volumeEl.addEventListener('input', function(){
         audio.volume = volumeEl.value;
       });
 
       audio.addEventListener('play', function(){ btn.textContent = '⏸'; });
       audio.addEventListener('pause', function(){ btn.textContent = '▶'; });
+
+      // 阅读进度条
+      window.addEventListener('scroll', function(){
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var p = h > 0 ? (window.scrollY / h) * 100 : 0;
+        document.getElementById('progress-bar').style.width = p + '%';
+      });
+
+      // 返回顶部
+      var backBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function(){
+        if (window.scrollY > 300) {
+          backBtn.classList.add('show');
+        } else {
+          backBtn.classList.remove('show');
+        }
+      });
+      backBtn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     })();
   </script>
 
