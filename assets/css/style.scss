@@ -83,12 +83,15 @@ html::before {
   100% { opacity: 0.6; }
 }
 
-/* ===== 导航栏：蓝色玻璃 + 霓虹发光 ===== */
+/* ===== 导航栏：彩虹渐变边框 3px + 蓝色玻璃 ===== */
 .navbar {
-  background: rgba(255, 255, 255, .35);
+  border: 3px solid transparent;
+  background:
+    linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.35)) padding-box,
+    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border-bottom: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 0 0 16px 16px;
   box-shadow: 0 4px 20px rgba(60, 100, 170, .1);
   position: sticky;
   top: 0;
@@ -151,7 +154,7 @@ html::before {
   width: 60%;
 }
 
-/* ===== 内容区：彩虹渐变边框 + 玻璃卡片 ===== */
+/* ===== 内容区：彩虹渐变边框 3px + 玻璃卡片 ===== */
 .content {
   max-width: 1100px;
   width: 90%;
@@ -160,8 +163,8 @@ html::before {
   flex: 1;
   min-height: calc(100vh - 200px);
 
-  /* 彩虹渐变边框 */
-  border: 2px solid transparent;
+  /* 彩虹渐变边框 3px */
+  border: 3px solid transparent;
   background:
     linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)) padding-box,
     linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
@@ -280,17 +283,20 @@ html::before {
   background: rgba(100, 160, 220, .12);
 }
 
-/* ===== 页脚：蓝色玻璃（贴底） ===== */
+/* ===== 页脚：彩虹渐变边框 3px + 蓝色玻璃 ===== */
 .footer {
   margin-top: auto;
   text-align: center;
   padding: 24px;
   font-size: 13px;
   color: #3a5a7a;
-  background: rgba(255, 255, 255, .25);
+  border: 3px solid transparent;
+  background:
+    linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.25)) padding-box,
+    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 16px 16px 0 0;
 }
 
 /* ===== 阅读进度条 ===== */
@@ -307,7 +313,7 @@ html::before {
 /* ===== 返回顶部按钮 ===== */
 #back-to-top {
   position: fixed;
-  bottom: 90px;
+  bottom: 16px;
   right: 16px;
   z-index: 999;
   width: 36px;
@@ -357,9 +363,13 @@ body.dark-mode::after {
     transparent 12px
   );
 }
+
+/* 深色模式：导航栏彩虹边框 3px */
 body.dark-mode .navbar {
-  background: rgba(20, 40, 80, .35);
-  border-bottom-color: rgba(100, 160, 220, .3);
+  border: 3px solid transparent;
+  background:
+    linear-gradient(rgba(20,40,80,.35), rgba(20,40,80,.35)) padding-box,
+    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
 }
 body.dark-mode .logo,
 body.dark-mode .nav-links a {
@@ -375,9 +385,9 @@ body.dark-mode #theme-toggle {
   color: #a8c8f0;
 }
 
-/* 深色模式：彩虹边框 */
+/* 深色模式：内容卡片彩虹边框 3px */
 body.dark-mode .content {
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   background:
     linear-gradient(rgba(20,40,80,.65), rgba(20,40,80,.65)) padding-box,
     linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
@@ -424,10 +434,14 @@ body.dark-mode .content tr:nth-child(even) {
 body.dark-mode .content tr:hover {
   background: rgba(100, 160, 220, .15);
 }
+
+/* 深色模式：页脚彩虹边框 3px */
 body.dark-mode .footer {
+  border: 3px solid transparent;
+  background:
+    linear-gradient(rgba(20,40,80,.25), rgba(20,40,80,.25)) padding-box,
+    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
   color: #88a8c8;
-  background: rgba(20, 40, 80, .25);
-  border-top-color: rgba(100, 160, 220, .3);
 }
 
 /* ===== 手机适配 ===== */
