@@ -32,19 +32,6 @@
     Thanks for stopping by! 😁
   </footer>
 
-  <!-- ===== 左下角悬浮播放器 ===== -->
-  <div id="bg-player">
-    <div id="bg-song-name">未播放</div>
-    <div id="bg-row">
-      <button id="bg-prev-btn" title="上一首">⏮</button>
-      <button id="bg-play-btn" title="播放/暂停">▶</button>
-      <button id="bg-next-btn" title="下一首">⏭</button>
-      <input type="range" id="bg-volume" min="0" max="1" step="0.01" value="1">
-    </div>
-  </div>
-
-  <audio id="bg-music" preload="none"></audio>
-
   <!-- 返回顶部 -->
   <button id="back-to-top" title="返回顶部">↑</button>
 
@@ -73,97 +60,11 @@
       transform: scale(1.08);
     }
 
-    /* 播放器样式（左下角） */
-    #bg-player {
-      position: fixed;
-      bottom: 4px;
-      left: 4px;
-      z-index: 999;
-      background: rgba(255, 255, 255, .12);
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, .3);
-      border-radius: 6px;
-      padding: 3px 6px;
-      box-shadow: 0 4px 16px rgba(60, 100, 170, .12);
-      text-align: center;
-      opacity: .85;
-      transition: opacity .25s;
-    }
-    #bg-player:hover {
-      opacity: 1;
-      background: rgba(255, 255, 255, .2);
-    }
-    #bg-song-name {
-      font-size: 7px;
-      color: #1e3c72;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 90px;
-    }
-    #bg-row {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-    #bg-row button {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(58, 110, 165, .8);
-      color: #fff;
-      font-size: 7px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s;
-      padding: 0;
-      flex-shrink: 0;
-    }
-    #bg-row button:hover {
-      background: rgba(74, 126, 181, 1);
-      transform: scale(1.1);
-    }
-    #bg-row button:active {
-      transform: scale(0.95);
-    }
-    #bg-volume {
-      width: 32px;
-      height: 3px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: rgba(58, 110, 165, .25);
-      border-radius: 3px;
-      outline: none;
-      cursor: pointer;
-    }
-    #bg-volume::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #3a6ea5;
-      cursor: pointer;
-    }
-    #bg-volume::-moz-range-thumb {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #3a6ea5;
-      border: none;
-      cursor: pointer;
-    }
-
     /* 返回顶部按钮（右下角） */
     #back-to-top {
       position: fixed;
-      bottom: 60px;
-      right: 8px;
+      bottom: 16px;
+      right: 16px;
       z-index: 999;
       width: 36px;
       height: 36px;
@@ -192,62 +93,6 @@
 
   <script>
     (function(){
-      var audio = document.getElementById('bg-music');
-      var btn = document.getElementById('bg-play-btn');
-      var prevBtn = document.getElementById('bg-prev-btn');
-      var nextBtn = document.getElementById('bg-next-btn');
-      var nameEl = document.getElementById('bg-song-name');
-      var volumeEl = document.getElementById('bg-volume');
-      audio.volume = 1.0;
-
-      var playlist = [
-        { name: "情深海更深 - 黎姿",   src: "{{ '/assets/audio/001.mp3' | relative_url }}" },
-        { name: "痴心换情深 - 周慧敏", src: "{{ '/assets/audio/002.mp3' | relative_url }}" },
-        { name: "风雨爱人 - 李翊君",   src: "{{ '/assets/audio/003.mp3' | relative_url }}" }
-      ];
-      var current = 0;
-      var loaded = false;
-
-      nameEl.textContent = playlist[0].name;
-
-      function loadSong(index) {
-        current = (index + playlist.length) % playlist.length;
-        audio.src = playlist[current].src;
-        nameEl.textContent = playlist[current].name;
-        loaded = true;
-      }
-
-      btn.addEventListener('click', function(){
-        if (audio.paused) {
-          if (!loaded) { loadSong(current); }
-          audio.play().catch(function(){});
-        } else {
-          audio.pause();
-        }
-      });
-
-      prevBtn.addEventListener('click', function(){
-        loadSong(current - 1);
-        audio.play().catch(function(){});
-      });
-
-      nextBtn.addEventListener('click', function(){
-        loadSong(current + 1);
-        audio.play().catch(function(){});
-      });
-
-      audio.addEventListener('ended', function(){
-        loadSong(current + 1);
-        audio.play().catch(function(){});
-      });
-
-      volumeEl.addEventListener('input', function(){
-        audio.volume = volumeEl.value;
-      });
-
-      audio.addEventListener('play', function(){ btn.textContent = '⏸'; });
-      audio.addEventListener('pause', function(){ btn.textContent = '▶'; });
-
       // 阅读进度条
       window.addEventListener('scroll', function(){
         var h = document.documentElement.scrollHeight - window.innerHeight;
