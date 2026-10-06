@@ -85,6 +85,9 @@ html::before {
 
 /* ===== 导航栏：彩虹渐变边框 3px + 全圆角 ===== */
 .navbar {
+  max-width: 1100px;
+  width: 90%;
+  margin: 12px auto 0;
   border: 3px solid transparent;
   background:
     linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.35)) padding-box,
@@ -96,7 +99,6 @@ html::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  margin: 12px 12px 0;
 }
 .nav-inner {
   max-width: 1100px;
@@ -286,7 +288,9 @@ html::before {
 
 /* ===== 页脚：彩虹渐变边框 3px + 全圆角 ===== */
 .footer {
-  margin-top: auto;
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto 12px;
   text-align: center;
   padding: 24px;
   font-size: 13px;
@@ -298,7 +302,6 @@ html::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
-  margin: 0 12px 12px;
 }
 
 /* ===== 阅读进度条 ===== */
@@ -449,7 +452,8 @@ body.dark-mode .footer {
 /* ===== 手机适配 ===== */
 @media (max-width: 600px) {
   .navbar {
-    margin: 8px 8px 0;
+    width: 92%;
+    margin: 8px auto 0;
   }
   .nav-inner {
     height: auto;
@@ -470,10 +474,10 @@ body.dark-mode .footer {
     font-size: 13px;
   }
   .content {
-    margin: 16px 12px;
+    width: 92%;
+    margin: 16px auto;
     padding: 28px 20px;
     border-radius: 12px;
-    width: auto;
   }
   .content table {
     font-size: 13px;
@@ -483,6 +487,7 @@ body.dark-mode .footer {
     padding: 6px 8px;
   }
   .footer {
-    margin: 0 8px 8px;
+    width: 92%;
+    margin: 0 auto 8px;
   }
 }
