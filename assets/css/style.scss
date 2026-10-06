@@ -5,7 +5,7 @@
 
 /* ===== 蓝色底 + 纵向 flex 布局 ===== */
 body {
-  font-family: "LXGW WenKai", -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
   background: linear-gradient(135deg, #c8ddf5, #a8c8f0, #88b0e8);
   color: #333;
   line-height: 1.8;
@@ -201,11 +201,11 @@ body::after {
   border-radius: 0 6px 6px 0;
 }
 
-/* ===== 代码块：等宽字体 ===== */
+/* ===== 代码块：系统等宽字体 ===== */
 .content pre,
 .content code,
 .content pre code {
-  font-family: "LXGW WenKai Mono", Consolas, Monaco, monospace;
+  font-family: "SF Mono", Consolas, Monaco, "Courier New", monospace;
 }
 
 /* ===== 表格：手机横向滚动 ===== */
