@@ -32,22 +32,9 @@ body::before {
   pointer-events: none;
 }
 
-/* ===== 静态细纹层（反向） ===== */
+/* ===== 反向细纹层：已关闭（性能优化） ===== */
 body::after {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(160, 100, 220, .4) 0px,
-    rgba(160, 100, 220, .4) 2px,
-    transparent 2px,
-    transparent 12px
-  );
-  opacity: 0.15;
-  pointer-events: none;
+  display: none;
 }
 
 /* ===== 导航栏：彩虹渐变边框 3px + 全圆角 ===== */
@@ -322,15 +309,6 @@ body.dark-mode::before {
     rgba(100, 160, 220, .5) 40px
   );
 }
-body.dark-mode::after {
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(160, 100, 220, .4) 0px,
-    rgba(160, 100, 220, .4) 2px,
-    transparent 2px,
-    transparent 12px
-  );
-}
 
 /* 深色模式：导航栏彩虹边框 3px */
 body.dark-mode .navbar {
@@ -414,6 +392,17 @@ body.dark-mode .footer {
 
 /* ===== 手机适配 ===== */
 @media (max-width: 600px) {
+  /* 手机端关闭毛玻璃，提升滚动性能 */
+  .navbar,
+  .content,
+  .footer {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .navbar { background: rgba(255, 255, 255, .7); }
+  .content { background: rgba(255, 255, 255, .9); }
+  .footer { background: rgba(255, 255, 255, .5); }
+
   .navbar {
     width: 92%;
     margin: 8px auto 0;
