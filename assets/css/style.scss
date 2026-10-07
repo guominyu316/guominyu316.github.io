@@ -294,16 +294,16 @@ body::after {
   display: flex;
 }
 
-/* ===== 联系方式图标 ===== */
+/* ===== 联系方式图标（放大版） ===== */
 .contact-links {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
   margin: 20px 0;
 }
 .contact-links a {
   display: inline-flex;
-  font-size: 22px;
+  font-size: 32px;
   color: #333;
   transition: transform .2s, color .2s;
   text-decoration: none;
