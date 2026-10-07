@@ -120,7 +120,6 @@ body::after {
   flex: 1;
   min-height: calc(100vh - 200px);
 
-  /* 彩虹渐变边框 3px */
   border: 3px solid transparent;
   background:
     linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)) padding-box,
@@ -295,6 +294,37 @@ body::after {
   display: flex;
 }
 
+/* ===== 联系方式图标 ===== */
+.contact-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+.contact-links a {
+  display: inline-flex;
+  font-size: 22px;
+  color: #333;
+  transition: transform .2s, color .2s;
+  text-decoration: none;
+}
+.contact-links a:hover {
+  transform: scale(1.15);
+}
+.contact-links a[title="微信"]:hover   { color: #07c160; }
+.contact-links a[title="QQ"]:hover     { color: #12b7f5; }
+.contact-links a[title="Line"]:hover   { color: #06c755; }
+.contact-links a[title="GitHub"]:hover { color: #181717; }
+
+/* 深色模式适配：联系方式 */
+body.dark-mode .contact-links a {
+  color: #a8c8f0;
+}
+body.dark-mode .contact-links a[title="微信"]:hover   { color: #07c160; }
+body.dark-mode .contact-links a[title="QQ"]:hover     { color: #12b7f5; }
+body.dark-mode .contact-links a[title="Line"]:hover   { color: #06c755; }
+body.dark-mode .contact-links a[title="GitHub"]:hover { color: #ffffff; }
+
 /* ===== 深色模式 ===== */
 body.dark-mode {
   background: linear-gradient(135deg, #0f1b2d, #1a2b45, #243b5c);
@@ -310,7 +340,6 @@ body.dark-mode::before {
   );
 }
 
-/* 深色模式：导航栏彩虹边框 3px */
 body.dark-mode .navbar {
   border: 3px solid transparent;
   background:
@@ -331,7 +360,6 @@ body.dark-mode #theme-toggle {
   color: #a8c8f0;
 }
 
-/* 深色模式：内容卡片彩虹边框 3px */
 body.dark-mode .content {
   border: 3px solid transparent;
   background:
@@ -381,7 +409,6 @@ body.dark-mode .content tr:hover {
   background: rgba(100, 160, 220, .15);
 }
 
-/* 深色模式：页脚彩虹边框 3px */
 body.dark-mode .footer {
   border: 3px solid transparent;
   background:
@@ -392,7 +419,6 @@ body.dark-mode .footer {
 
 /* ===== 手机适配 ===== */
 @media (max-width: 600px) {
-  /* 手机端关闭毛玻璃，提升滚动性能 */
   .navbar,
   .content,
   .footer {
