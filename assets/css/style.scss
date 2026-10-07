@@ -311,7 +311,7 @@ body::after {
 .contact-links a:hover {
   transform: scale(1.15);
 }
-.contact-links a[title="微信"]:hover   { color: #07c160; }
+.contact-links a[title="WeChat"]:hover { color: #07c160; }
 .contact-links a[title="QQ"]:hover     { color: #12b7f5; }
 .contact-links a[title="Line"]:hover   { color: #06c755; }
 .contact-links a[title="GitHub"]:hover { color: #181717; }
@@ -320,7 +320,7 @@ body::after {
 body.dark-mode .contact-links a {
   color: #a8c8f0;
 }
-body.dark-mode .contact-links a[title="微信"]:hover   { color: #07c160; }
+body.dark-mode .contact-links a[title="WeChat"]:hover { color: #07c160; }
 body.dark-mode .contact-links a[title="QQ"]:hover     { color: #12b7f5; }
 body.dark-mode .contact-links a[title="Line"]:hover   { color: #06c755; }
 body.dark-mode .contact-links a[title="GitHub"]:hover { color: #ffffff; }
