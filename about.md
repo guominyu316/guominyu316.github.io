@@ -27,9 +27,6 @@ title: 关于我
   <a href="https://wa.me/你的手机号" target="_blank" rel="noopener" title="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
-  <a href="https://line.me/ti/p/你的LINE_ID" target="_blank" rel="noopener" title="Line">
-    <i class="fa-brands fa-line"></i>
-  </a>
   <a href="https://weixin.qq.com/" target="_blank" rel="noopener" title="WeChat">
     <i class="fa-brands fa-weixin"></i>
   </a>
