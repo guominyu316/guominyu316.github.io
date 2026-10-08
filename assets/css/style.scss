@@ -436,6 +436,11 @@ body.dark-mode .footer {
   .content { background: rgba(255, 255, 255, .7); }
   .footer { background: rgba(255, 255, 255, .25); }
 
+  /* 手机深色模式：覆盖上面的浅色背景 */
+  body.dark-mode .navbar { background: rgba(20, 40, 80, .5); }
+  body.dark-mode .content { background: rgba(20, 40, 80, .8); }
+  body.dark-mode .footer { background: rgba(20, 40, 80, .4); }
+
   .navbar {
     width: 92%;
     margin: 8px auto 0;
