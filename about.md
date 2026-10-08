@@ -18,11 +18,14 @@ title: 关于我
 - 英语读写还行，能看懂常见英文网页
 - 学新东西上手快
 
-## 联系我
+## 联系方式
 
 <div class="contact-links">
   <a href="https://github.com/guominyu316" target="_blank" rel="noopener" title="GitHub">
     <i class="fa-brands fa-github"></i>
+  </a>
+  <a href="https://wa.me/你的手机号" target="_blank" rel="noopener" title="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
   </a>
   <a href="https://line.me/ti/p/你的LINE_ID" target="_blank" rel="noopener" title="Line">
     <i class="fa-brands fa-line"></i>
