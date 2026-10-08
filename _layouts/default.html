@@ -26,6 +26,23 @@
 
   <main class="content">
     {{ content }}
+
+    {% if page.previous or page.next %}
+    <nav class="post-nav">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="post-nav-prev">
+          ← {{ page.previous.title }}
+        </a>
+      {% else %}
+        <span></span>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="post-nav-next">
+          {{ page.next.title }} →
+        </a>
+      {% endif %}
+    </nav>
+    {% endif %}
   </main>
 
   <footer class="footer">
