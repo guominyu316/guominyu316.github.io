@@ -302,36 +302,6 @@ body.dark-mode .post-nav a:hover {
   transition: width .1s;
 }
 
-/* ===== 返回顶部按钮 ===== */
-#back-to-top {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 999;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(58, 110, 165, .85);
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(60, 100, 170, .25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all .25s;
-}
-#back-to-top:hover {
-  background: rgba(74, 126, 181, 1);
-  transform: scale(1.1);
-}
-#back-to-top.show {
-  display: flex;
-}
-
 /* ===== 联系方式图标 ===== */
 .contact-links {
   display: flex;
