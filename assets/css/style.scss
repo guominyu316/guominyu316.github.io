@@ -235,11 +235,11 @@ body::after {
   background: rgba(100, 160, 220, .12);
 }
 
-/* ===== 上一篇 / 下一篇：彩虹渐变边框 + 发光悬浮 ===== */
+/* ===== 上一篇 / 下一篇 ===== */
 .post-nav {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
   margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid rgba(100, 160, 220, .3);
@@ -251,28 +251,25 @@ body::after {
   text-decoration: none;
   font-size: 14px;
   color: #1e3c72;
+  background: rgba(255, 255, 255, .5);
   border: 2px solid transparent;
-  background:
-    linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)) padding-box,
-    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
   transition: all .25s;
 }
 .post-nav a:hover {
+  background: rgba(100, 160, 220, .2);
+  border-color: rgba(100, 160, 220, .6);
   transform: translateY(-2px);
-  box-shadow:
-    0 0 0 1px rgba(160, 100, 220, .6),
-    0 6px 16px rgba(60, 100, 170, .2),
-    0 0 12px rgba(160, 100, 220, .4);
 }
 .post-nav-prev { text-align: left; }
 .post-nav-next { text-align: right; }
 
 body.dark-mode .post-nav a {
   color: #a8c8f0;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(rgba(20,40,80,.5), rgba(20,40,80,.5)) padding-box,
-    linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a064dc) border-box;
+  background: rgba(20, 40, 80, .5);
+}
+body.dark-mode .post-nav a:hover {
+  background: rgba(100, 160, 220, .25);
+  border-color: rgba(100, 160, 220, .5);
 }
 
 /* ===== 页脚：彩虹渐变边框 3px + 全圆角 ===== */
