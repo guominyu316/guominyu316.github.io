@@ -235,7 +235,7 @@ body::after {
   background: rgba(100, 160, 220, .12);
 }
 
-/* ===== 上一篇 / 下一篇 ===== */
+/* ===== 上一篇 / 下一篇：淡蓝底 + 淡蓝边框 ===== */
 .post-nav {
   display: flex;
   justify-content: space-between;
@@ -251,13 +251,13 @@ body::after {
   text-decoration: none;
   font-size: 14px;
   color: #1e3c72;
-  background: rgba(255, 255, 255, .5);
-  border: 2px solid transparent;
+  background: rgba(100, 160, 220, .12);
+  border: 2px solid rgba(100, 160, 220, .35);
   transition: all .25s;
 }
 .post-nav a:hover {
-  background: rgba(100, 160, 220, .2);
-  border-color: rgba(100, 160, 220, .6);
+  background: rgba(100, 160, 220, .25);
+  border-color: rgba(100, 160, 220, .7);
   transform: translateY(-2px);
 }
 .post-nav-prev { text-align: left; }
@@ -265,11 +265,12 @@ body::after {
 
 body.dark-mode .post-nav a {
   color: #a8c8f0;
-  background: rgba(20, 40, 80, .5);
+  background: rgba(100, 160, 220, .15);
+  border-color: rgba(100, 160, 220, .4);
 }
 body.dark-mode .post-nav a:hover {
   background: rgba(100, 160, 220, .25);
-  border-color: rgba(100, 160, 220, .5);
+  border-color: rgba(100, 160, 220, .7);
 }
 
 /* ===== 页脚：彩虹渐变边框 3px + 全圆角 ===== */
