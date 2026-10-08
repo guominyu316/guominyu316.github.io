@@ -294,7 +294,7 @@ body::after {
   display: flex;
 }
 
-/* ===== 联系方式图标（放大版） ===== */
+/* ===== 联系方式图标 ===== */
 .contact-links {
   display: flex;
   gap: 20px;
@@ -311,19 +311,21 @@ body::after {
 .contact-links a:hover {
   transform: scale(1.15);
 }
-.contact-links a[title="WeChat"]:hover { color: #07c160; }
-.contact-links a[title="QQ"]:hover     { color: #12b7f5; }
-.contact-links a[title="Line"]:hover   { color: #06c755; }
-.contact-links a[title="GitHub"]:hover { color: #181717; }
+.contact-links a[title="GitHub"]:hover   { color: #181717; }
+.contact-links a[title="WhatsApp"]:hover { color: #25D366; }
+.contact-links a[title="Line"]:hover     { color: #06c755; }
+.contact-links a[title="WeChat"]:hover   { color: #07c160; }
+.contact-links a[title="QQ"]:hover       { color: #12b7f5; }
 
 /* 深色模式适配：联系方式 */
 body.dark-mode .contact-links a {
   color: #a8c8f0;
 }
-body.dark-mode .contact-links a[title="WeChat"]:hover { color: #07c160; }
-body.dark-mode .contact-links a[title="QQ"]:hover     { color: #12b7f5; }
-body.dark-mode .contact-links a[title="Line"]:hover   { color: #06c755; }
-body.dark-mode .contact-links a[title="GitHub"]:hover { color: #ffffff; }
+body.dark-mode .contact-links a[title="GitHub"]:hover   { color: #ffffff; }
+body.dark-mode .contact-links a[title="WhatsApp"]:hover { color: #25D366; }
+body.dark-mode .contact-links a[title="Line"]:hover     { color: #06c755; }
+body.dark-mode .contact-links a[title="WeChat"]:hover   { color: #07c160; }
+body.dark-mode .contact-links a[title="QQ"]:hover       { color: #12b7f5; }
 
 /* ===== 深色模式 ===== */
 body.dark-mode {
