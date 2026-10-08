@@ -18,7 +18,7 @@ title: 关于我
 - 英语读写还行，能看懂常见英文网页
 - 学新东西上手快
 
-## 联系方式
+## 联系我
 
 <div class="contact-links">
   <a href="https://github.com/guominyu316" target="_blank" rel="noopener" title="GitHub">
