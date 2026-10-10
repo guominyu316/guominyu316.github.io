@@ -235,6 +235,15 @@ body::after {
   background: rgba(100, 160, 220, .12);
 }
 
+/* ===== 雷达图适配 ===== */
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+body.dark-mode canvas {
+  filter: invert(1) hue-rotate(180deg) brightness(1.1);
+}
+
 /* ===== 上一篇 / 下一篇：淡蓝底 + 淡蓝边框 ===== */
 .post-nav {
   display: flex;
@@ -436,7 +445,6 @@ body.dark-mode .footer {
   .content { background: rgba(255, 255, 255, .7); }
   .footer { background: rgba(255, 255, 255, .25); }
 
-  /* 手机深色模式：覆盖上面的浅色背景 */
   body.dark-mode .navbar { background: rgba(20, 40, 80, .5); }
   body.dark-mode .content { background: rgba(20, 40, 80, .8); }
   body.dark-mode .footer { background: rgba(20, 40, 80, .4); }
