@@ -433,7 +433,7 @@ body.dark-mode .footer {
   color: #88a8c8;
 }
 
-/* ===== 手机适配：去掉彩虹边框，改纯色 ===== */
+/* ===== 手机适配：去掉彩虹边框 + 全部 25% 透明度 ===== */
 @media (max-width: 600px) {
   .navbar,
   .content,
@@ -447,10 +447,10 @@ body.dark-mode .footer {
     width: 92%;
     margin: 8px auto 0;
     position: relative;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .25);
   }
   body.dark-mode .navbar {
-    background: rgba(20, 40, 80, .5);
+    background: rgba(20, 40, 80, .25);
   }
 
   .content {
@@ -458,10 +458,10 @@ body.dark-mode .footer {
     margin: 16px auto;
     padding: 28px 20px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .25);
   }
   body.dark-mode .content {
-    background: rgba(20, 40, 80, .8);
+    background: rgba(20, 40, 80, .25);
   }
 
   .footer {
@@ -470,7 +470,7 @@ body.dark-mode .footer {
     background: rgba(255, 255, 255, .25);
   }
   body.dark-mode .footer {
-    background: rgba(20, 40, 80, .4);
+    background: rgba(20, 40, 80, .25);
   }
 
   .nav-inner {
