@@ -5,22 +5,18 @@ title: 电子书
 
 <h1>电子书</h1>
 
-<div class="book-list">
-  <div class="book-card" data-file="/assets/docs/book1.pdf">白蛇全传</div>
-  <div class="book-card" data-file="/assets/docs/book2.pdf">第二本书</div>
-  <div class="book-card" data-file="/assets/docs/book3.pdf">第三本书</div>
-  <div class="book-card" data-file="/assets/docs/book4.pdf">第四本书</div>
-  <div class="book-card" data-file="/assets/docs/book5.pdf">第五本书</div>
-  <div class="book-card" data-file="/assets/docs/book6.pdf">第六本书</div>
-  <div class="book-card" data-file="/assets/docs/book7.pdf">第七本书</div>
-  <div class="book-card" data-file="/assets/docs/book8.pdf">第八本书</div>
-  <div class="book-card" data-file="/assets/docs/book9.pdf">第九本书</div>
-  <div class="book-card" data-file="/assets/docs/book10.pdf">第十本书</div>
-</div>
-
-<div class="pdf-toolbar">
-  <button id="fullscreen-btn">全屏</button>
-</div>
+<select id="book-select">
+  <option value="/assets/docs/book1.pdf">白蛇全传</option>
+  <option value="/assets/docs/book2.pdf">第二本书</option>
+  <option value="/assets/docs/book3.pdf">第三本书</option>
+  <option value="/assets/docs/book4.pdf">第四本书</option>
+  <option value="/assets/docs/book5.pdf">第五本书</option>
+  <option value="/assets/docs/book6.pdf">第六本书</option>
+  <option value="/assets/docs/book7.pdf">第七本书</option>
+  <option value="/assets/docs/book8.pdf">第八本书</option>
+  <option value="/assets/docs/book9.pdf">第九本书</option>
+  <option value="/assets/docs/book10.pdf">第十本书</option>
+</select>
 
 <iframe
   id="pdf-viewer"
@@ -29,69 +25,25 @@ title: 电子书
 </iframe>
 
 <style>
-  /* 书单卡片 */
-  .book-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .book-card {
-    padding: 14px 16px;
-    border-radius: 10px;
-    border: 2px solid rgba(100, 160, 220, .35);
-    background: rgba(100, 160, 220, .12);
-    color: #1e3c72;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all .25s;
-    text-align: center;
-    word-break: break-word;
-  }
-  .book-card:hover {
-    background: rgba(100, 160, 220, .25);
-    border-color: rgba(100, 160, 220, .7);
-    transform: translateY(-2px);
-  }
-  .book-card.active {
-    background: rgba(100, 160, 220, .3);
-    border-color: rgba(100, 160, 220, 1);
-    font-weight: 600;
-  }
-
-  /* 工具栏 */
-  .pdf-toolbar {
-    margin-bottom: 10px;
-  }
-  #fullscreen-btn {
-    padding: 8px 16px;
+  #book-select {
+    padding: 8px 12px;
     border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
     border: 2px solid rgba(100, 160, 220, .35);
     background: rgba(100, 160, 220, .12);
     color: #1e3c72;
-    font-size: 14px;
     cursor: pointer;
+    outline: none;
     transition: all .25s;
+    width: 100%;
+    max-width: 400px;
   }
-  #fullscreen-btn:hover {
-    background: rgba(100, 160, 220, .25);
+  #book-select:hover {
     border-color: rgba(100, 160, 220, .7);
-  }
-
-  /* 深色模式 */
-  body.dark-mode .book-card {
     background: rgba(100, 160, 220, .2);
-    color: #a8c8f0;
-    border-color: rgba(100, 160, 220, .4);
   }
-  body.dark-mode .book-card:hover {
-    background: rgba(100, 160, 220, .3);
-  }
-  body.dark-mode .book-card.active {
-    background: rgba(100, 160, 220, .35);
-    border-color: rgba(100, 160, 220, .8);
-  }
-  body.dark-mode #fullscreen-btn {
+  body.dark-mode #book-select {
     background: rgba(100, 160, 220, .2);
     color: #a8c8f0;
     border-color: rgba(100, 160, 220, .4);
@@ -99,41 +51,10 @@ title: 电子书
 </style>
 
 <script>
-  var base = '{{ "/pdfjs/web/viewer.html" | relative_url }}';
-  var viewer = document.getElementById('pdf-viewer');
-  var cards = document.querySelectorAll('.book-card');
-
-  // 加载 PDF
-  function loadBook(file) {
+  document.getElementById('book-select').addEventListener('change', function(){
+    var file = this.value;
+    var base = '{{ "/pdfjs/web/viewer.html" | relative_url }}';
     var url = base + '?file=' + file + '&cMapUrl=/pdfjs/cmaps/&standardFontDataUrl=/pdfjs/standard_fonts/';
-    viewer.src = url;
-    localStorage.setItem('lastBook', file);
-    cards.forEach(function(c) {
-      c.classList.toggle('active', c.dataset.file === file);
-    });
-  }
-
-  // 点击卡片
-  cards.forEach(function(card) {
-    card.addEventListener('click', function() {
-      loadBook(this.dataset.file);
-    });
-  });
-
-  // 恢复上次选择
-  var lastBook = localStorage.getItem('lastBook');
-  if (lastBook) {
-    loadBook(lastBook);
-  } else {
-    loadBook('/assets/docs/book1.pdf');
-  }
-
-  // 全屏
-  document.getElementById('fullscreen-btn').addEventListener('click', function() {
-    if (viewer.requestFullscreen) {
-      viewer.requestFullscreen();
-    } else if (viewer.webkitRequestFullscreen) {
-      viewer.webkitRequestFullscreen();
-    }
+    document.getElementById('pdf-viewer').src = url;
   });
 </script>
