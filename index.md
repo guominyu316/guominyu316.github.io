@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GMY316
+title: 𝔾𝕄𝕐𝟛𝟙𝟞
 ---
 
 # 欢迎来到我的个人网站
